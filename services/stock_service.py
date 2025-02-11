@@ -3,7 +3,9 @@ from typing import List
 from model.stock_model import Stock
 from openpyxl import load_workbook
 from datetime import datetime
-
+from openpyxl.drawing.image import Image
+import os
+from PIL import ImageGrab
 
 class StockAPI:
     def __init__(self, api_key: str):
@@ -70,6 +72,10 @@ class StockAPI:
             print(f"\nData successfully updated in {filename}")
             print("Updated cells: A2 (Date), B7-B16 (S1), C7-C16 (S2), D7-D16 (R1), E7-E16 (R2)")
             
+            
         except Exception as e:
             print(f"Error updating Excel file: {e}")
+
+   
+
 

@@ -28,30 +28,32 @@ class Stock:
     shares_outstanding: int
     timestamp: int
 
+
+
     @property
     def pivot_point(self) -> float:
         """Calculate the pivot point using high, low, and close prices"""
-        return (self.day_high + self.day_low + self.previous_close) / 3
-
-    @property
-    def support_1(self) -> float:
-        """Calculate first support level"""
-        return (2 * self.pivot_point) - self.day_high
+        return round((self.day_high + self.day_low + self.previous_close) / 3)
 
     @property
     def support_2(self) -> float:
         """Calculate second support level"""
-        return self.pivot_point - (self.day_high - self.day_low)
+        return round(self.pivot_point - (self.day_high - self.day_low), 4)
+
+    @property
+    def support_1(self) -> float:
+        """Calculate first support level"""
+        return round((2 * self.pivot_point) - self.day_high, 4)
 
     @property
     def resistance_1(self) -> float:
         """Calculate first resistance level"""
-        return (2 * self.pivot_point) - self.day_low
+        return round((2 * self.pivot_point) - self.day_low, 4)
 
     @property
     def resistance_2(self) -> float:
         """Calculate second resistance level"""
-        return self.pivot_point + (self.day_high - self.day_low)
+        return round(self.pivot_point + (self.day_high - self.day_low), 4)
 
     @classmethod
     def from_dict(cls, data: dict):
@@ -82,3 +84,5 @@ class Stock:
 
     def __str__(self):
         return f"{self.symbol:<8} {self.name:<30} ${self.price:>9.2f} {self.changes_percentage:>9.2f}%"
+
+

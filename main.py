@@ -1,11 +1,12 @@
 from services.stock_service import StockAPI
+from services.currency_service import fetch_currency_data
 from datetime import datetime
 
 
 
 def main():
     # Configuration
-    API_KEY = "gdFGEbEetdj6sWmM97WpGM2y9AwbeyLB"
+    API_KEY = ""
     SYMBOLS = ["TSLA", "GOOG", "META", "AAPL", "AMZN", 
               "NFLX", "IBM", "MSFT", "NVDA", "AMD"]
 
@@ -21,4 +22,6 @@ def main():
         api.update_excel(stocks)
 
 if __name__ == "__main__":
-    main()
+    main()    
+    fetch_currency_data()
+   
